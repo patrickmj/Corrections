@@ -1,12 +1,12 @@
 <?php
-echo head();
+echo head(array('title' => 'correction'));
 
 ?>
 
-<?php foreach(loop('corrections_correction') as $correction):?>
-<?php echo metadata('corrections_correction', 'item_id'); ?>
-
-<?php endforeach; ?>
+<?php 
+//var_dump($corrections_correction);
+echo all_element_texts($corrections_correction);
+?>
 
 
 <?php echo foot(); ?>

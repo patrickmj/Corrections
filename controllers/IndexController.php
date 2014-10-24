@@ -21,8 +21,17 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
     
     public function correctAction()
     {
+        //$itemId = $this->getParam('item_id');
         $correction = $this->_helper->db->getTable('CorrectionsCorrection')->find();
-        $elTexts = $correction->getAllElementTexts();
+        $item = $correction->getItem();
+        $item->setReplaceElementTexts(false);
+        $view = get_view();
+        $elTexts = $view->allElementTexts($correction, array('return_type' => 'array'));
+        //the array just gives the text, not the array that goes into setting element texts
+        $elTexts = $this->reformatElTexts($elTexts);
+        print_r($elTexts);
+        $item->addElementTextsByArray($elTexts);
+        $item->save();
     }
     
     protected function getElements()
@@ -37,6 +46,21 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
             }
         }
         return $elements;
+    }
+    
+    protected function reformatElTexts($elTexts)
+    {
+        foreach ($elTexts as $elSet => $elements) {
+            foreach ($elements as $element => $texts) {
+                foreach ($texts as $index => $text) {
+                    $elTexts[$elSet][$element][$index] = array(
+                            'text' => $text,
+                            'html' => false
+                            );
+                }
+            }
+        }
+        return $elTexts;
     }
     
     protected function _redirectAfterAdd($record)

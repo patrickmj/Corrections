@@ -13,6 +13,10 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
         'config_form'
         );
     
+    protected $_filters = array(
+        'admin_navigation_main'
+        );
+    
     public function hookInstall($args)
     {
         $db = get_db();
@@ -74,5 +78,11 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
             $elements[$elSet->name][] = $element->name;
         }
         set_option('corrections_elements', json_encode($elements));
+    }
+    
+    public function filterAdminNavigationMain($nav)
+    {
+        $nav['Corrections'] = array('label' => __('Corrections'), 'uri' => url('corrections'));
+        return $nav;
     }
 }
