@@ -7,8 +7,29 @@ echo head(array('title' => 'Corrections'));
 <div id='primary'>
 
 
-<?php //echo flash(); ?>
-    
+<?php echo flash(); 
+echo item_search_filters();
+?>
+
+
+<?php echo pagination_links(); ?>
+
+<ul class="quick-filter-wrapper">
+    <li><a href="#" tabindex="0"><?php echo __('Status'); ?></a>
+    <ul class="dropdown">
+        <li><span class="quick-filter-heading"><?php echo __('Status') ?></span></li>
+        <li><a href="<?php echo url('corrections'); ?>"><?php echo __('View All') ?></a></li>
+        <li><a href="<?php echo url('corrections', array('status' => 'submitted')); ?>"><?php echo __('Submitted'); ?></a></li>
+        <li><a href="<?php echo url('corrections', array('status' => 'reviewed')); ?>"><?php echo __('Reviewed'); ?></a></li>
+    </ul>
+    </li>
+</ul>
+
+<p style='clear: both' >
+<?php echo __("Corrections are additive. No data will be deleted or replaced. After accepting a
+        correction, review it on the item page and edit there to confirm the decision.
+        "); ?>
+</p>
     <table>
     <thead>
     <tr><th><?php echo __('Item'); ?></th><th><?php echo __('Correction');?></th></tr>
@@ -22,7 +43,11 @@ echo head(array('title' => 'Corrections'));
     <?php echo all_element_texts($item); ?>
     </td>
     <td>
-    <a href=""><?php echo __('Accept revision for %s', metadata($item, array('Dublin Core', 'Title'))); ?></a>
+    <a target="_blank" href="<?php echo url("/corrections/index/correct/id/{$correction->id}"); ?>"><?php echo __('Accept revision for "%s"', metadata($item, array('Dublin Core', 'Title'))); ?></a>
+    <p>
+    <?php echo metadata($correction, 'comment'); ?>
+    </p>
+    
     <?php echo all_element_texts($correction); ?>
     </td>
     </tr>

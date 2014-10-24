@@ -1,28 +1,27 @@
 <?php
 class Corrections_IndexController extends Omeka_Controller_AbstractActionController
 {
-    
+
     public function init()
     {
         $this->_helper->db->setDefaultModelName('CorrectionsCorrection');
     }
-    
+
     public function addAction()
     {
         $this->view->addHelperPath(CORRECTIONS_DIR . '/helpers', 'Corrections_View_Helper_');
         $itemId = $this->getParam('item_id');
         $item = $this->_helper->db->getTable('Item')->find($itemId);
         $this->view->item = $item;
-        
         $this->view->elements = $this->getElements();
         parent::addAction();
     }
 
-    
+
     public function correctAction()
     {
-        //$itemId = $this->getParam('item_id');
-        $correction = $this->_helper->db->getTable('CorrectionsCorrection')->find();
+        $id = $this->getParam('id');
+        $correction = $this->_helper->db->getTable('CorrectionsCorrection')->find($id);
         $item = $correction->getItem();
         $item->setReplaceElementTexts(false);
         $view = get_view();
@@ -32,8 +31,12 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
         print_r($elTexts);
         $item->addElementTextsByArray($elTexts);
         $item->save();
+        $correction->status = 'reviewed';
+        $correction->reviewed = date('Y-m-d H:i:s');
+        $correction->save();
+        $this->_helper->redirector->gotoUrl("items/show/{$correction->item_id}");
     }
-    
+
     protected function getElements()
     {
         $elements = array();
@@ -47,7 +50,7 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
         }
         return $elements;
     }
-    
+
     protected function reformatElTexts($elTexts)
     {
         foreach ($elTexts as $elSet => $elements) {
@@ -62,10 +65,9 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
         }
         return $elTexts;
     }
-    
+
     protected function _redirectAfterAdd($record)
     {
-       // $this->_helper->redirector('browse');
-       $this->_helper->redirector->gotoUrl('items/show/2906');
-    }    
+       $this->_helper->redirector->gotoUrl("items/show/{$record->item_id}");
+    }
 }

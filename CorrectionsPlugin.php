@@ -21,13 +21,14 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
     {
         $db = get_db();
         $sql = "
-            
             CREATE TABLE IF NOT EXISTS `$db->CorrectionsCorrection` (
               `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
               `added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-              `corrected` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+              `reviewed` timestamp NULL,
               `item_id` int(10) NOT NULL,
               `comment` text COLLATE utf8_unicode_ci,
+              `status` tinytext NULL,
+              `owner_id` int(10) NULL,
               PRIMARY KEY (`id`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
         
@@ -82,7 +83,10 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
     
     public function filterAdminNavigationMain($nav)
     {
-        $nav['Corrections'] = array('label' => __('Corrections'), 'uri' => url('corrections'));
+        $nav['Corrections'] = array(
+                'label' => __('Corrections'),
+                'uri' => url('corrections',
+                 array('status' => 'submitted')));
         return $nav;
     }
 }
