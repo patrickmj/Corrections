@@ -11,7 +11,7 @@ Work in progress. A thing that I need for [US Museums Explorer](http://museums.h
 Configuration
 -------------
 
-Configuration lets you choose what elements in Omeka or correctable. A link to a correction page will let visitors
+Configuration lets you choose what elements in Omeka are correctable. A link to a correction page will let visitors
 propose corrections to the elements selected in configuration. This lets you leave some elements not subject to correction,
 but others that you choose will be.
 
