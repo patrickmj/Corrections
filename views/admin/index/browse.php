@@ -43,7 +43,11 @@ echo item_search_filters();
     <?php echo all_element_texts($item); ?>
     </td>
     <td>
+    <?php if (metadata($correction, 'status') == 'submitted'): ?>
     <a target="_blank" href="<?php echo url("/corrections/index/correct/id/{$correction->id}"); ?>"><?php echo __('Accept revision for "%s"', metadata($item, array('Dublin Core', 'Title'))); ?></a>
+    <?php else: ?>
+    <a target="_blank" href="<?php echo url("/corrections/index/show/id/{$correction->id}"); ?>"><?php echo __('View correction'); ?></a>
+    <?php endif; ?>
     <p>
     <?php echo metadata($correction, 'comment'); ?>
     </p>

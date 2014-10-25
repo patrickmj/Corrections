@@ -4,6 +4,12 @@ queue_css_string('input.add-element {display: none;}');
 echo head();
 
 ?>
+
+<?php 
+//echo $form;
+?>
+
+
 <form method='post'>
 <?php 
 foreach ($elements as $element) {
@@ -23,11 +29,10 @@ echo $this->elementForm($element, $corrections_correction);
 </div>
 
 <?php 
-echo $this->csrf;
+echo $captchaScript;
+echo $csrf;
 echo $this->formSubmit('submit', __('Submit Correction'));
 ?>
-
-
 
 <input type='hidden' name='item_id' value='<?php echo $item->id; ?>' />
 </form>
