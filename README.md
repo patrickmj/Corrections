@@ -6,7 +6,7 @@ Omeka plugin. Basic mechanism for public adding correction info to what exists
 Plugin Status
 -------------
 
-Work in progress. A thing that I need for [http://museums.hackingthehumanities.org/about US Museums Explorer]. Not affiliated with my place of work. 
+Work in progress. A thing that I need for [US Museums Explorer](http://museums.hackingthehumanities.org/about). Not affiliated with my place of work. 
 
 Configuration
 -------------
