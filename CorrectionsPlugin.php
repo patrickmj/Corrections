@@ -47,7 +47,7 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
         echo self::correctionLink($item);
     }
     
-    public static function correctionLink($item)
+    public static function correctionLink($item, $text = 'FixItFixItFixIt!')
     {
         $link = link_to('Corrections_IndexController',
                         'add',
@@ -56,7 +56,7 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
                          array('item_id' => $item->id)
                 );
         $url = url('corrections/index/add/item_id/' . $item->id);
-        return "<a href='$url'>FixItFixIt</a>";
+        return "<a href='$url'>$text</a>";
         return $link;
     }
     
