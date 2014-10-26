@@ -2,6 +2,8 @@
 class Corrections_IndexController extends Omeka_Controller_AbstractActionController
 {
 
+    public $captcha;
+    
     public function init()
     {
         $this->_helper->db->setDefaultModelName('CorrectionsCorrection');
@@ -17,10 +19,18 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
         $elements = $this->getElements();
         $this->view->elements = $elements;
         $captcha = Omeka_Captcha::getCaptcha();
+        $this->captcha = $captcha;
         $this->view->captchaScript = $captcha->render(new Zend_View);
-        $csrf = new Omeka_Form_SessionCsrf;
-        $this->view->csrf = $csrf;
-        parent::addAction();
+        if ($this->getRequest()->isPost()) {
+            if ( $this->captcha->isValid(null, $_POST)) {
+                parent::addAction();
+            } else {
+                $this->_helper->flashMessenger(__('Your CAPTCHA submission was invalid, please try again.'), 'error');
+                $this->view->corrections_correction = new CorrectionsCorrection();
+            }
+        } else {
+            parent::addAction();
+        }
     }
 
     public function correctAction()

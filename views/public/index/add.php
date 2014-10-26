@@ -8,14 +8,17 @@ echo head();
 <?php 
 //echo $form;
 ?>
-
+<?php echo flash(); ?>
 
 <form method='post'>
+
 <?php 
 foreach ($elements as $element) {
-echo $this->elementForm($element, $corrections_correction);
+    echo $this->elementForm($element, $corrections_correction);
 }
 ?>
+
+
 <div class="field">
     <div class="two columns alpha">
         <label for='comment'>Comments</label>
@@ -30,7 +33,6 @@ echo $this->elementForm($element, $corrections_correction);
 
 <?php 
 echo $captchaScript;
-echo $csrf;
 echo $this->formSubmit('submit', __('Submit Correction'));
 ?>
 
