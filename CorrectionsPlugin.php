@@ -35,12 +35,12 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
         ";
         $db->query($sql);
         
-        set_option(json_encode(array()));
+        set_option('corrections_elements', json_encode(array()));
     }
     
     public function hookUninstall($args)
     {
-        
+        delete_option('corrections_elements');
     }
     
     public function hookPublicItemsShow($args)
