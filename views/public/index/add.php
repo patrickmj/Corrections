@@ -4,11 +4,18 @@ queue_css_string('input.add-element {display: none;}');
 echo head();
 
 ?>
-
-<?php 
-//echo $form;
-?>
 <?php echo flash(); ?>
+
+<p>
+<?php echo __('You can suggest corrections to the following fields for item '); ?>
+<?php echo link_to($item, 'show', metadata($item, array('Dublin Core', 'Title')) . '.' , array('target' => '_blank')); ?>
+</p>
+<p>
+<?php echo __('You can also leave general comments or suggestions in the "comments" section. An administrator will review your contribution.'); ?>
+</p>
+<p>
+<?php echo __('Thank you for taking the time to improve this site!'); ?>
+</p>
 
 <form method='post'>
 
