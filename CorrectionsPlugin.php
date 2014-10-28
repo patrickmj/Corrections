@@ -53,7 +53,7 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
     {
         $link = link_to('Corrections_IndexController',
                         'add',
-                        'FixItFixItFixIt',
+                         $text,
                          array(),
                          array('item_id' => $item->id)
                 );
