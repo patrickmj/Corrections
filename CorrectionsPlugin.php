@@ -85,6 +85,7 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
             }
             $elements[$elSet->name][] = $element->name;
         }
+        set_option('corrections_email', $post['corrections_email']);
         set_option('corrections_elements', json_encode($elements));
     }
     

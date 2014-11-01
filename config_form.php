@@ -1,4 +1,16 @@
-<p>Check the metadata fields that you want to make correctable by the public.</p>
+<div class="field">
+    <div class="two columns alpha">
+        <label><?php echo __('Email'); ?></label>    
+    </div>
+    <div class="inputs five columns omega">
+        <p class="explanation"><?php echo __('Email address to be notified about corrections'); ?></p>
+        <div class="input-block">
+        <input type='text' name='corrections_email' />
+        </div>
+    </div>
+</div>
+
+<p><?php echo __('Check the metadata fields that you want to make correctable by the public.'); ?></p>
 <?php
 $elTable = get_db()->getTable('Element');
 $data = $elTable->findPairsForSelectForm();
@@ -15,6 +27,9 @@ if(is_array($correctableElements)) {
     }
 }
 
+?>
+
+<?php 
 if (get_option('show_element_set_headings') ) {
     foreach($data as $elSet=>$options) {
         echo "<div class='field'>";

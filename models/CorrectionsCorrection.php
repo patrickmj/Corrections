@@ -21,6 +21,23 @@ class CorrectionsCorrection extends Omeka_Record_AbstractRecord
         return $this->getDb()->getTable('Item')->find($this->item_id);
     }
     
+    protected function afterSave($args)
+    {
+        $mail = new Zend_Mail('UTF-8');
+        $mail->addHeader('X-Mailer', 'PHP/' . phpversion());
+        $mail->setFrom(get_option('administrator_email'), get_option('site_title'));
+        $mail->addTo(get_option('corrections_email'));
+        $subject = __("A correction has been submitted to %s", get_option('site_title'));
+        $body = "<p>" . __("Please see %s to evaluate the correction.", WEB_ROOT. '/admin/corrections' ) . "</p>";
+        $mail->setSubject($subject);
+        $mail->setBodyHtml($body);
+        try {
+            $mail->send();
+        } catch(Exception $e) {
+            _log($e);
+        }
+    }
+    
     protected function beforeSave($args)
     {
         if ($args['post']) {
