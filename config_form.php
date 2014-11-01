@@ -2,7 +2,7 @@
 <?php
 $elTable = get_db()->getTable('Element');
 $data = $elTable->findPairsForSelectForm();
-
+$view = get_view();
 $correctableElements = json_decode(get_option('corrections_elements'), true);
 
 $values = array();
@@ -15,25 +15,17 @@ if(is_array($correctableElements)) {
     }
 }
 
-foreach($data as $elSet=>$options) {
-    echo "<div class='field'>";
-    echo "<h2>$elSet</h2>";
-    echo get_view()->formMultiCheckbox('element_sets', $values, null, $options, '');
-    echo "</div>";
+if (get_option('show_element_set_headings') ) {
+    foreach($data as $elSet=>$options) {
+        echo "<div class='field'>";
+        echo "<h2>$elSet</h2>";
+        echo $view->formMultiCheckbox('element_sets', $values, null, $options, '');
+        echo "</div>";
+    }
+} else {
+    foreach($data as $elSet=>$options) {
+        echo "<div class='field'>";
+        echo $view->formMultiCheckbox('element_sets', $values, null, $options, '');
+        echo "</div>";
+    }
 }
-
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
