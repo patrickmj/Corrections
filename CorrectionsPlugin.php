@@ -40,6 +40,11 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
     
     public function hookUninstall($args)
     {
+        $db = get_db();
+        $sql = "
+        DROP TABLE IF EXISTS `$db->CorrectionsCorrection`
+        ";
+        $db->query($sql);
         delete_option('corrections_elements');
     }
     

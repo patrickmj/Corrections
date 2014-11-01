@@ -29,10 +29,21 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
                 $this->view->corrections_correction = new CorrectionsCorrection();
             }
         } else {
+            $this->_helper->flashMessenger(__("Thank you for the correction. It is under review."), 'success');
             parent::addAction();
         }
     }
 
+    public function rejectAction()
+    {
+        $id = $this->getParam('id');
+        $correction = $this->_helper->db->getTable('CorrectionsCorrection')->find($id);
+        $correction->status = 'rejected';
+        $correction->reviewed = date('Y-m-d H:i:s');
+        $correction->save();
+        $this->_helper->redirector->gotoUrl("corrections?status=submitted");
+    }
+    
     public function correctAction()
     {
         $id = $this->getParam('id');
@@ -43,13 +54,11 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
         $elTexts = $view->allElementTexts($correction, array('return_type' => 'array'));
         //the array just gives the text, not the array that goes into setting element texts
         $elTexts = $this->reformatElTexts($elTexts);
-        print_r($elTexts);
         $item->addElementTextsByArray($elTexts);
         $item->save();
-        $correction->status = 'reviewed';
+        $correction->status = 'accepted';
         $correction->reviewed = date('Y-m-d H:i:s');
         $correction->save();
-        $this->_helper->flashMessenger(__("Thank you for the correction. It is under review."), 'success');
         $this->_helper->redirector->gotoUrl("items/show/{$correction->item_id}");
     }
 

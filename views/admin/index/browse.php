@@ -20,7 +20,8 @@ echo item_search_filters();
         <li><span class="quick-filter-heading"><?php echo __('Status') ?></span></li>
         <li><a href="<?php echo url('corrections'); ?>"><?php echo __('View All') ?></a></li>
         <li><a href="<?php echo url('corrections', array('status' => 'submitted')); ?>"><?php echo __('Submitted'); ?></a></li>
-        <li><a href="<?php echo url('corrections', array('status' => 'reviewed')); ?>"><?php echo __('Reviewed'); ?></a></li>
+        <li><a href="<?php echo url('corrections', array('status' => 'accepted')); ?>"><?php echo __('Accepted'); ?></a></li>
+        <li><a href="<?php echo url('corrections', array('status' => 'rejected')); ?>"><?php echo __('Rejected'); ?></a></li>
     </ul>
     </li>
 </ul>
@@ -43,11 +44,26 @@ echo item_search_filters();
     <?php echo all_element_texts($item); ?>
     </td>
     <td>
+    <p>
+    <?php echo __('Status: %s', metadata($correction, 'status'));?>
+    </p>
+    <ul>
     <?php if (metadata($correction, 'status') == 'submitted'): ?>
-    <a target="_blank" href="<?php echo url("/corrections/index/correct/id/{$correction->id}"); ?>"><?php echo __('Accept revision for "%s"', metadata($item, array('Dublin Core', 'Title'))); ?></a>
+    <li>
+    <a target="_blank" href="<?php echo url("/corrections/index/correct/id/{$correction->id}"); ?>">
+    <?php echo __('Accept correction for "%s"', metadata($item, array('Dublin Core', 'Title'))); ?></a>
+    </li>
+    <li>
+    <a href="<?php echo url("/corrections/index/reject/id/{$correction->id}"); ?>">
+    <?php echo __('Reject correction for "%s"', metadata($item, array('Dublin Core', 'Title'))); ?></a>
+    </li>    
     <?php else: ?>
-    <a target="_blank" href="<?php echo url("/corrections/index/show/id/{$correction->id}"); ?>"><?php echo __('View correction'); ?></a>
+    <li>
+    <a target="_blank" href="<?php echo url("/corrections/index/show/id/{$correction->id}"); ?>">
+    <?php echo __('View correction'); ?></a>
+    </li>
     <?php endif; ?>
+    </ul>
     <p>
     <?php echo metadata($correction, 'comment'); ?>
     </p>
