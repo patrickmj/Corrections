@@ -28,12 +28,38 @@ foreach ($elements as $element) {
 
 <div class="field">
     <div class="two columns alpha">
-        <label for='comment'>Comments</label>
+        <label for='comment'><?php echo __('Comments'); ?></label>
     </div>
     <div class="inputs five columns omega">
         <p class="explanation"></p>
         <div class="input-block">
             <textarea cols='50' rows='3' name='comment'></textarea>
+        </div>
+    </div>
+</div>
+
+
+<div class="field">
+    <div class="two columns alpha">
+        <label for='email'><?php echo __('Email'); ?></label>
+    </div>
+    <div class="inputs five columns omega">
+        <p class="explanation"></p>
+        <div class="input-block">
+            <input type='text' name='email' />
+        </div>
+    </div>
+</div>
+
+
+<div class="field">
+    <div class="two columns alpha">
+        <label for='may_contact'><?php echo __('Can we contact you?'); ?></label>
+    </div>
+    <div class="inputs five columns omega">
+        <p class="explanation"><?php echo __('Check this box if it is okay for us to contact you about this correction.'); ?></p>
+        <div class="input-block">
+            <input type='checkbox' value='1' name='may_contact' />
         </div>
     </div>
 </div>

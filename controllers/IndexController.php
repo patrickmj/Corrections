@@ -11,7 +11,7 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
 
     public function addAction()
     {
-        require CORRECTIONS_DIR . '/forms/Correction.php';
+        //require CORRECTIONS_DIR . '/forms/Correction.php';
         $this->view->addHelperPath(CORRECTIONS_DIR . '/helpers', 'Corrections_View_Helper_');
         $itemId = $this->getParam('item_id');
         $item = $this->_helper->db->getTable('Item')->find($itemId);
@@ -23,13 +23,13 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
         $this->view->captchaScript = $captcha->render(new Zend_View);
         if ($this->getRequest()->isPost()) {
             if ( $this->captcha->isValid(null, $_POST)) {
+                $this->_helper->flashMessenger(__("Thank you for the correction. It is under review."), 'success');
                 parent::addAction();
             } else {
                 $this->_helper->flashMessenger(__('Your CAPTCHA submission was invalid, please try again.'), 'error');
                 $this->view->corrections_correction = new CorrectionsCorrection();
             }
         } else {
-            $this->_helper->flashMessenger(__("Thank you for the correction. It is under review."), 'success');
             parent::addAction();
         }
     }

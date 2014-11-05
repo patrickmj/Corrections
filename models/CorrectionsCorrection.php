@@ -7,6 +7,8 @@ class CorrectionsCorrection extends Omeka_Record_AbstractRecord
     public $comment;
     public $status;
     public $owner_id;
+    public $email;
+    public $may_contact;
     
     public function _initializeMixins()
     {

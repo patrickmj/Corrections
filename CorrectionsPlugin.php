@@ -29,6 +29,8 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
               `comment` text COLLATE utf8_unicode_ci,
               `status` tinytext NULL,
               `owner_id` int(10) NULL,
+              `email` tinytext NULL,
+              `may_contact` BOOLEAN NULL,
               PRIMARY KEY (`id`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
         
