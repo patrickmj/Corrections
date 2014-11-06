@@ -11,10 +11,11 @@ $item = $corrections_correction->getItem();
 <li>On: <?php echo link_to($item, 'show', metadata($item, array('Dublin Core', 'Title'))); ?> </li>
 <li>Added: <?php echo metadata($corrections_correction, 'added'); ?></li>
 <li>Status: <?php echo metadata($corrections_correction, 'status'); ?></li>
-<li>Reviewed on: <?php echo metadata($corrections_correction, 'reviewed'); ?></li>
-
+<?php if ($reviewed = metadata($corrections_correction, 'reviewed')): ?>
+<li>Reviewed on: <?php echo $reviewed; ?></li>
+<?php endif; ?>
 <?php if ($owner = $corrections_correction->getOwner() ): ?>
-<li>From: <?php echo metadata($owner, 'name'); ?></li>
+<li>From: <?php echo link_to($owner, 'show', metadata($owner, 'name')); ?></li>
 <?php else: ?>
     <?php if ($corrections_correction->may_contact): ?>
     <li>From: <a href='mailto:<?php echo metadata($corrections_correction, 'email'); ?>'><?php echo metadata($corrections_correction, 'email'); ?></a> (May Contact)</li>
