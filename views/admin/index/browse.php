@@ -48,21 +48,20 @@ echo item_search_filters();
     <?php echo __('Status: %s', metadata($correction, 'status'));?>
     </p>
     <ul>
-    <?php if (metadata($correction, 'status') == 'submitted'): ?>
-    <li>
-    <a target="_blank" href="<?php echo url("/corrections/index/correct/id/{$correction->id}"); ?>">
-    <?php echo __('Accept correction for "%s"', metadata($item, array('Dublin Core', 'Title'))); ?></a>
-    </li>
-    <li>
-    <a href="<?php echo url("/corrections/index/reject/id/{$correction->id}"); ?>">
-    <?php echo __('Reject correction for "%s"', metadata($item, array('Dublin Core', 'Title'))); ?></a>
-    </li>    
-    <?php else: ?>
-    <li>
-    <a target="_blank" href="<?php echo url("/corrections/index/show/id/{$correction->id}"); ?>">
-    <?php echo __('View correction'); ?></a>
-    </li>
-    <?php endif; ?>
+        <?php if (metadata($correction, 'status') == 'submitted'): ?>
+        <li>
+        <a href="<?php echo url("/corrections/index/correct/id/{$correction->id}"); ?>">
+        <?php echo __('Accept correction for "%s"', metadata($item, array('Dublin Core', 'Title'))); ?></a>
+        </li>
+        <li>
+        <a href="<?php echo url("/corrections/index/reject/id/{$correction->id}"); ?>">
+        <?php echo __('Reject correction for "%s"', metadata($item, array('Dublin Core', 'Title'))); ?></a>
+        </li>    
+        <?php endif; ?>
+        <li>
+        <a href="<?php echo url("/corrections/index/show/id/{$correction->id}"); ?>">
+        <?php echo __('View correction'); ?></a>
+        </li>
     </ul>
     <p>
     <?php echo metadata($correction, 'comment'); ?>
