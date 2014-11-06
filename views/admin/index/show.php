@@ -14,7 +14,7 @@ $item = $corrections_correction->getItem();
     </li>
 </ul>
 <?php endif; ?>
-<?php echo __(''); ?>
+
 <ul>
 <li><?php echo __('On:'); ?> <?php echo link_to($item, 'show', metadata($item, array('Dublin Core', 'Title'))); ?> </li>
 <li><?php echo __('Added:'); ?> <?php echo metadata($corrections_correction, 'added'); ?></li>
@@ -26,9 +26,9 @@ $item = $corrections_correction->getItem();
 <li><?php echo __('From:'); ?> <?php echo link_to($owner, 'show', metadata($owner, 'name')); ?></li>
 <?php else: ?>
     <?php if ($corrections_correction->may_contact): ?>
-    <li><?php echo __('From:'); ?> <a href='mailto:<?php echo metadata($corrections_correction, 'email'); ?>'><?php echo metadata($corrections_correction, 'email'); ?></a> (May Contact)</li>
+    <li><?php echo __('From:'); ?> <a href='mailto:<?php echo metadata($corrections_correction, 'email'); ?>'><?php echo metadata($corrections_correction, 'email'); ?></a><?php echo __('(Allowed To Contact)'); ?> </li>
     <?php else: ?>
-    <li><?php echo __('From:'); ?> <?php echo metadata($corrections_correction, 'email'); ?>(May Not Contact)</li>
+    <li><?php echo __('From:'); ?> <?php echo metadata($corrections_correction, 'email'); ?> <?php echo __('(May Not Contact)')?></li>
     <?php endif; ?>
 <?php endif; ?>
 </ul>
