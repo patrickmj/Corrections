@@ -4,9 +4,17 @@ $item = $corrections_correction->getItem();
 ?>
 
 <?php if (metadata($corrections_correction, 'status') == 'submitted'): ?>
-<a href="<?php echo url("/corrections/index/correct/id/{$corrections_correction->id}"); ?>">
-<?php echo __('Accept correction for "%s"', metadata($item, array('Dublin Core', 'Title'))); ?></a>
+<ul>
+    <li>
+    <a href="<?php echo url("/corrections/index/correct/id/{$corrections_correction->id}"); ?>">
+    <?php echo __('Accept correction for "%s"', metadata($item, array('Dublin Core', 'Title'))); ?></a>
+    <li>
+    <a href="<?php echo url("/corrections/index/reject/id/{$corrections_correction->id}"); ?>">
+    <?php echo __('Reject correction for "%s"', metadata($item, array('Dublin Core', 'Title'))); ?></a>
+    </li>
+</ul>
 <?php endif; ?>
+
 <ul>
 <li>On: <?php echo link_to($item, 'show', metadata($item, array('Dublin Core', 'Title'))); ?> </li>
 <li>Added: <?php echo metadata($corrections_correction, 'added'); ?></li>

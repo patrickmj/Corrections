@@ -56,7 +56,7 @@ echo item_search_filters();
         <li>
         <a href="<?php echo url("/corrections/index/reject/id/{$correction->id}"); ?>">
         <?php echo __('Reject correction for "%s"', metadata($item, array('Dublin Core', 'Title'))); ?></a>
-        </li>    
+        </li>
         <?php endif; ?>
         <li>
         <a href="<?php echo url("/corrections/index/show/id/{$correction->id}"); ?>">
