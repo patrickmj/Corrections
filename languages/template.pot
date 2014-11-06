@@ -1,0 +1,161 @@
+# Translation for the Correction plugin for Omeka.
+# Copyright (C) 2014 Patrick Murray-John
+# This file is distributed under the same license as the Omeka package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Corrections\n"
+"Report-Msgid-Bugs-To: http://github.com/patrickmj/Corrections/issues\n"
+"POT-Creation-Date: 2014-11-06 18:34-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: CorrectionsPlugin.php:97
+msgid "Corrections"
+msgstr ""
+
+#: config_form.php:6
+msgid "Email address to be notified about corrections"
+msgstr ""
+
+#: config_form.php:13
+msgid ""
+"Check the metadata fields that you want to make correctable by the public."
+msgstr ""
+
+#: controllers/IndexController.php:26
+msgid "Thank you for the correction. It is under review."
+msgstr ""
+
+#: controllers/IndexController.php:29 controllers/IndexController.php:97
+msgid "Your CAPTCHA submission was invalid, please try again."
+msgstr ""
+
+#: models/CorrectionsCorrection.php:32
+#, php-format
+msgid "A correction has been submitted to %s"
+msgstr ""
+
+#: models/CorrectionsCorrection.php:33
+#, php-format
+msgid "Please see %s to evaluate the correction."
+msgstr ""
+
+#: views/admin/index/browse.php:18 views/admin/index/browse.php:20
+msgid "Status"
+msgstr ""
+
+#: views/admin/index/browse.php:22
+msgid "Submitted"
+msgstr ""
+
+#: views/admin/index/browse.php:23
+msgid "Accepted"
+msgstr ""
+
+#: views/admin/index/browse.php:24
+msgid "Rejected"
+msgstr ""
+
+#: views/admin/index/browse.php:30
+msgid ""
+"Corrections are additive. No data will be deleted or replaced. After "
+"accepting a\n"
+"        correction, review it on the item page and edit there to confirm the "
+"decision.\n"
+"        "
+msgstr ""
+
+#: views/admin/index/browse.php:36
+msgid "Correction"
+msgstr ""
+
+#: views/admin/index/browse.php:48
+#, php-format
+msgid "Status: %s"
+msgstr ""
+
+#: views/admin/index/browse.php:54 views/admin/index/show.php:10
+#, php-format
+msgid "Accept correction for \"%s\""
+msgstr ""
+
+#: views/admin/index/browse.php:58 views/admin/index/show.php:13
+#, php-format
+msgid "Reject correction for \"%s\""
+msgstr ""
+
+#: views/admin/index/browse.php:63
+msgid "View correction"
+msgstr ""
+
+#: views/admin/index/show.php:19
+msgid "On:"
+msgstr ""
+
+#: views/admin/index/show.php:20
+msgid "Added:"
+msgstr ""
+
+#: views/admin/index/show.php:21
+msgid "Status:"
+msgstr ""
+
+#: views/admin/index/show.php:23
+msgid "Reviewed on:"
+msgstr ""
+
+#: views/admin/index/show.php:26 views/admin/index/show.php:29
+#: views/admin/index/show.php:31
+msgid "From:"
+msgstr ""
+
+#: views/admin/index/show.php:29
+msgid "(Allowed To Contact)"
+msgstr ""
+
+#: views/admin/index/show.php:31
+msgid "(May Not Contact)"
+msgstr ""
+
+#: views/admin/index/show.php:37
+msgid "Comment:"
+msgstr ""
+
+#: views/public/index/add.php:10
+msgid "You can suggest corrections to the following fields for item "
+msgstr ""
+
+#: views/public/index/add.php:14
+msgid ""
+"You can also leave general comments or suggestions in the \"comments\" "
+"section. An administrator will review your contribution."
+msgstr ""
+
+#: views/public/index/add.php:17
+msgid "Thank you for taking the time to improve this site!"
+msgstr ""
+
+#: views/public/index/add.php:31
+msgid "Comments"
+msgstr ""
+
+#: views/public/index/add.php:57
+msgid "Can we contact you?"
+msgstr ""
+
+#: views/public/index/add.php:60
+msgid ""
+"Check this box if it is okay for us to contact you about this correction."
+msgstr ""
+
+#: views/public/index/add.php:69
+msgid "Submit Correction"
+msgstr ""
