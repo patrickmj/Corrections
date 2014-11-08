@@ -26,7 +26,7 @@ foreach ($elements as $element) {
     $elSet = $element->getElementSet();
     $elSetName = $elSet->name;
     echo $this->elementForm($element, $corrections_correction);
-    echo "<p>" . __('Current data for %s', $elSetName . ' ' . $elName) . "</p>";
+    echo "<p>" . __('Current data for %s', $elName) . "</p>";
     echo "<p>" . metadata($item, array($elSetName, $elName)) . "</p>";
     echo "</div>";
 }
