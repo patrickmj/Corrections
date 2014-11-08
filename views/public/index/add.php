@@ -21,7 +21,14 @@ echo head();
 
 <?php 
 foreach ($elements as $element) {
+    echo "<div class='elCorrection' style='border: 1px solid black;'>";
+    $elName = $element->name;
+    $elSet = $element->getElementSet();
+    $elSetName = $elSet->name;
     echo $this->elementForm($element, $corrections_correction);
+    echo "<p>" . __('Current data for %s', $elSetName . ' ' . $elName) . "</p>";
+    echo "<p>" . metadata($item, array($elSetName, $elName)) . "</p>";
+    echo "</div>";
 }
 ?>
 
