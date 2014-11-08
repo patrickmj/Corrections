@@ -2,7 +2,7 @@
 
 queue_css_string('input.add-element {display: none;}');
 echo head();
-
+$user = current_user();
 ?>
 <?php echo flash(); ?>
 
@@ -45,6 +45,7 @@ foreach ($elements as $element) {
     </div>
 </div>
 
+<?php if ( ! $user): ?>
 
 <div class="field">
     <div class="two columns alpha">
@@ -57,6 +58,8 @@ foreach ($elements as $element) {
         </div>
     </div>
 </div>
+
+<?php endif; ?>
 
 
 <div class="field">
@@ -72,7 +75,9 @@ foreach ($elements as $element) {
 </div>
 
 <?php 
-echo $captchaScript;
+if (! $user) {
+    echo $captchaScript;
+}
 echo $this->formSubmit('submit', __('Submit Correction'));
 ?>
 
