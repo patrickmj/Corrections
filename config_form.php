@@ -5,7 +5,7 @@
     <div class="inputs five columns omega">
         <p class="explanation"><?php echo __('Email address to be notified about corrections'); ?></p>
         <div class="input-block">
-        <input type='text' name='corrections_email' />
+        <input type='text' value='<?php echo get_option('corrections_email'); ?>' name='corrections_email' />
         </div>
     </div>
 </div>
@@ -28,7 +28,6 @@ if(is_array($correctableElements)) {
 }
 
 ?>
-
 <?php 
 if (get_option('show_element_set_headings') ) {
     foreach($data as $elSet=>$options) {
@@ -38,9 +37,7 @@ if (get_option('show_element_set_headings') ) {
         echo "</div>";
     }
 } else {
-    foreach($data as $elSet=>$options) {
-        echo "<div class='field'>";
-        echo $view->formMultiCheckbox('element_sets', $values, null, $options, '');
-        echo "</div>";
-    }
+    echo "<div class='field no-headings'>";
+    echo $view->formMultiCheckbox('element_sets', $values, null, $data, '');
+    echo "</div>";
 }
