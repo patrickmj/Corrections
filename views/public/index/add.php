@@ -1,6 +1,4 @@
 <?php
-
-//queue_css_string('input.add-element {display: none;}');
 queue_css_file('correction');
 echo head();
 $user = current_user();
@@ -27,7 +25,7 @@ foreach ($elements as $element) {
     $elSet = $element->getElementSet();
     $elSetName = $elSet->name;
     echo $this->elementForm($element, $corrections_correction);
-    echo "<p>" . __('Current data for %s', $elName) . "</p>";
+    echo "<p class='correction-current-data'>" . __('Current data for %s', $elName) . "</p>";
     echo "<p>" . metadata($item, array($elSetName, $elName)) . "</p>";
     echo "</div>";
 }

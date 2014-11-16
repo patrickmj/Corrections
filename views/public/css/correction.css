@@ -6,3 +6,7 @@ input.add-element {display: none;}
     border-bottom: 1px solid black;
     padding: 2px;
 }
+
+.correction-current-data {
+    border-top: 1px dotted black;
+}
