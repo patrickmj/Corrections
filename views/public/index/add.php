@@ -1,6 +1,7 @@
 <?php
 
-queue_css_string('input.add-element {display: none;}');
+//queue_css_string('input.add-element {display: none;}');
+queue_css_file('correction');
 echo head();
 $user = current_user();
 ?>
@@ -21,7 +22,7 @@ $user = current_user();
 
 <?php 
 foreach ($elements as $element) {
-    echo "<div class='elCorrection' style='border: 1px solid black;'>";
+    echo "<div class='element-correction' >";
     $elName = $element->name;
     $elSet = $element->getElementSet();
     $elSetName = $elSet->name;
