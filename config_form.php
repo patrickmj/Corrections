@@ -3,7 +3,7 @@
         <label><?php echo __('Email'); ?></label>
     </div>
     <div class="inputs five columns omega">
-        <p class="explanation"><?php echo __('Email address to be notified about corrections'); ?></p>
+        <p class="explanation"><?php echo __('Email address to be notified about corrections (defaults to site admin)'); ?></p>
         <div class="input-block">
         <input type='text' value='<?php echo get_option('corrections_email'); ?>' name='corrections_email' />
         </div>
