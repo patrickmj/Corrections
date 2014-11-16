@@ -56,8 +56,11 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
         echo self::correctionLink($item);
     }
     
-    public static function correctionLink($item, $text = 'FixItFixItFixIt!')
+    public static function correctionLink($item, $text = null)
     {
+        if (is_null($text)) {
+            $text = get_option('corrections_text');
+        }
         $link = link_to('Corrections_IndexController',
                         'add',
                          $text,
@@ -88,6 +91,7 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
             $elements[$elSet->name][] = $element->name;
         }
         set_option('corrections_email', $post['corrections_email']);
+        set_option('corrections_text', $post['corrections_text']);
         set_option('corrections_elements', json_encode($elements));
     }
     

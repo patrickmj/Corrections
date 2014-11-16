@@ -37,7 +37,6 @@ class CorrectionsCorrection extends Omeka_Record_AbstractRecord
             $mail->send();
         } catch(Exception $e) {
             _log($e);
-            debug($body);
         }
     }
     

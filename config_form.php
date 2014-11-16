@@ -1,11 +1,23 @@
 <div class="field">
     <div class="two columns alpha">
-        <label><?php echo __('Email'); ?></label>    
+        <label><?php echo __('Email'); ?></label>
     </div>
     <div class="inputs five columns omega">
         <p class="explanation"><?php echo __('Email address to be notified about corrections'); ?></p>
         <div class="input-block">
         <input type='text' value='<?php echo get_option('corrections_email'); ?>' name='corrections_email' />
+        </div>
+    </div>
+</div>
+
+<div class="field">
+    <div class="two columns alpha">
+        <label><?php echo __('Default text'); ?></label>    
+    </div>
+    <div class="inputs five columns omega">
+        <p class="explanation"><?php echo __('Text for invitation to suggesting a correction'); ?></p>
+        <div class="input-block">
+        <input type='text' value='<?php echo get_option('corrections_text'); ?>' name='corrections_text' />
         </div>
     </div>
 </div>
