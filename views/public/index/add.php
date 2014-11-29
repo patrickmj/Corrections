@@ -18,26 +18,13 @@ $user = current_user();
 
 <form method='post'>
 
-<?php 
-foreach ($elements as $element) {
-    echo "<div class='element-correction' >";
-    $elName = $element->name;
-    $elSet = $element->getElementSet();
-    $elSetName = $elSet->name;
-    echo $this->elementForm($element, $corrections_correction);
-    echo "<p class='correction-current-data'>" . __('Current data for %s', $elName) . "</p>";
-    echo "<p>" . metadata($item, array($elSetName, $elName)) . "</p>";
-    echo "</div>";
-}
-?>
-
 
 <div class="field">
     <div class="two columns alpha">
         <label for='comment'><?php echo __('Comments'); ?></label>
     </div>
     <div class="inputs five columns omega">
-        <p class="explanation"></p>
+        <p class="explanation"><?php echo __('Please describe the nature of this correction, or anything about it that we should know. Thanks!'); ?></p>
         <div class="input-block">
             <textarea cols='50' rows='3' name='comment'></textarea>
         </div>
@@ -72,6 +59,21 @@ foreach ($elements as $element) {
         </div>
     </div>
 </div>
+
+
+<?php 
+foreach ($elements as $element) {
+    echo "<div class='element-correction' >";
+    $elName = $element->name;
+    $elSet = $element->getElementSet();
+    $elSetName = $elSet->name;
+    echo $this->elementForm($element, $corrections_correction);
+    echo "<p class='correction-current-data'>" . __('Current data for %s', $elName) . "</p>";
+    echo "<p>" . metadata($item, array($elSetName, $elName)) . "</p>";
+    echo "</div>";
+}
+?>
+
 
 <?php 
 if (! $user) {

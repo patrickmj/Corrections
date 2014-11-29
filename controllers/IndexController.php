@@ -3,7 +3,7 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
 {
 
     public $captcha;
-    
+
     public function init()
     {
         $this->_helper->db->setDefaultModelName('CorrectionsCorrection');
