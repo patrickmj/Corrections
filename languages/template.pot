@@ -17,33 +17,41 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: CorrectionsPlugin.php:97
+#: CorrectionsPlugin.php:101
 msgid "Corrections"
 msgstr ""
 
 #: config_form.php:6
-msgid "Email address to be notified about corrections"
+msgid "Email address to be notified about corrections (defaults to site admin)"
 msgstr ""
 
-#: config_form.php:13
+#: config_form.php:15
+msgid "Default text"
+msgstr ""
+
+#: config_form.php:18
+msgid "Text for invitation to suggesting a correction"
+msgstr ""
+
+#: config_form.php:25
 msgid ""
 "Check the metadata fields that you want to make correctable by the public."
 msgstr ""
 
-#: controllers/IndexController.php:26
+#: controllers/IndexController.php:29
 msgid "Thank you for the correction. It is under review."
 msgstr ""
 
-#: controllers/IndexController.php:29 controllers/IndexController.php:97
+#: controllers/IndexController.php:32 controllers/IndexController.php:100
 msgid "Your CAPTCHA submission was invalid, please try again."
 msgstr ""
 
-#: models/CorrectionsCorrection.php:32
+#: models/CorrectionsCorrection.php:37
 #, php-format
 msgid "A correction has been submitted to %s"
 msgstr ""
 
-#: models/CorrectionsCorrection.php:33
+#: models/CorrectionsCorrection.php:38
 #, php-format
 msgid "Please see %s to evaluate the correction."
 msgstr ""
@@ -129,33 +137,44 @@ msgstr ""
 msgid "Comment:"
 msgstr ""
 
-#: views/public/index/add.php:10
+#: views/public/index/add.php:9
 msgid "You can suggest corrections to the following fields for item "
 msgstr ""
 
-#: views/public/index/add.php:14
+#: views/public/index/add.php:13
 msgid ""
 "You can also leave general comments or suggestions in the \"comments\" "
 "section. An administrator will review your contribution."
 msgstr ""
 
-#: views/public/index/add.php:17
+#: views/public/index/add.php:16
 msgid "Thank you for taking the time to improve this site!"
 msgstr ""
 
-#: views/public/index/add.php:31
+#: views/public/index/add.php:24
 msgid "Comments"
 msgstr ""
 
-#: views/public/index/add.php:57
+#: views/public/index/add.php:27
+msgid ""
+"Please describe the nature of this correction, or anything about it that we "
+"should know. Thanks!"
+msgstr ""
+
+#: views/public/index/add.php:53
 msgid "Can we contact you?"
 msgstr ""
 
-#: views/public/index/add.php:60
+#: views/public/index/add.php:56
 msgid ""
 "Check this box if it is okay for us to contact you about this correction."
 msgstr ""
 
-#: views/public/index/add.php:69
+#: views/public/index/add.php:71
+#, php-format
+msgid "Current data for %s"
+msgstr ""
+
+#: views/public/index/add.php:82
 msgid "Submit Correction"
 msgstr ""
