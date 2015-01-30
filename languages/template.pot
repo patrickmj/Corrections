@@ -17,7 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: CorrectionsPlugin.php:101
+#: CorrectionsPlugin.php:24
+msgid ""
+"ReCaptcha is not configured. Anonymous users will not be able to submit "
+"corrections."
+msgstr ""
+
+#: CorrectionsPlugin.php:110
 msgid "Corrections"
 msgstr ""
 
