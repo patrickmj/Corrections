@@ -19,6 +19,11 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
     
     public function hookInstall($args)
     {
+        if (! Omeka_Captcha::getCaptcha()) {
+            $messenger = new Omeka_Controller_Action_Helper_FlashMessenger;
+            $message = __('ReCaptcha is not configured. Anonymous users will not be able to submit corrections.');
+            $messenger->addMessage($message, 'alert');
+        }
         $db = get_db();
         $sql = "
             CREATE TABLE IF NOT EXISTS `$db->CorrectionsCorrection` (
