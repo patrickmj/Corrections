@@ -57,6 +57,10 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
     
     public function hookPublicItemsShow($args)
     {
+        $user = current_user();
+        if (! $user && ! Omeka_Captcha::getCaptcha()) {
+            return;
+        }
         $item = $args['item'];
         echo self::correctionLink($item);
     }
