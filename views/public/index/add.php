@@ -7,7 +7,7 @@ $user = current_user();
 
 <p>
 <?php echo __('You can suggest corrections to the following fields for item '); ?>
-<?php echo link_to($item, 'show', metadata($item, array('Dublin Core', 'Title')) . '.' , array('target' => '_blank')); ?>
+<?php echo link_to($item, 'show', metadata($item, array('Dublin Core', 'Title'), array('no_filter' => true)) . '.' , array('target' => '_blank')); ?>
 </p>
 <p>
 <?php echo __('You can also leave general comments or suggestions in the "comments" section. An administrator will review your contribution.'); ?>
@@ -69,7 +69,7 @@ foreach ($elements as $element) {
     $elSetName = $elSet->name;
     echo $this->elementForm($element, $corrections_correction);
     echo "<p class='correction-current-data'>" . __('Current data for %s', $elName) . "</p>";
-    echo "<p>" . metadata($item, array($elSetName, $elName)) . "</p>";
+    echo "<p>" . metadata($item, array($elSetName, $elName), array('no_filter' => true)) . "</p>";
     echo "</div>";
 }
 ?>
