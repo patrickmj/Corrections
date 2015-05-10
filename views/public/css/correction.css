@@ -10,3 +10,8 @@ input.add-element {display: none;}
 .correction-current-data {
     border-top: 1px dotted black;
 }
+
+
+.autumn div textarea {
+    background-color: white; !important
+}
