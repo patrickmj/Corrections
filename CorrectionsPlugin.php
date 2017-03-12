@@ -43,6 +43,7 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
         $db->query($sql);
         
         set_option('corrections_elements', json_encode(array()));
+        set_option('corrections_text', 'Submit a correction');
     }
     
     public function hookUninstall($args)
@@ -77,8 +78,12 @@ class CorrectionsPlugin extends Omeka_Plugin_AbstractPlugin
                          array('item_id' => $item->id)
                 );
         $url = url('corrections/index/add/item_id/' . $item->id);
-        return "<a href='$url'>$text</a>";
-        return $link;
+        $html = '';
+        $html .= "<div class='corrections'>";
+        $html .= "<h2>" . __('Correction?') . "</h2>";
+        $html .= "<a href='$url'>$text</a>";
+        $html .= "</div>";
+        return $html;
     }
     
     public function hookConfigForm($args)
