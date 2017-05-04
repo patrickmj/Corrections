@@ -1,4 +1,5 @@
 <?php
+
 class Corrections_IndexController extends Omeka_Controller_AbstractActionController
 {
 
@@ -11,7 +12,6 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
 
     public function addAction()
     {
-        //require CORRECTIONS_DIR . '/forms/Correction.php';
         $this->view->addHelperPath(CORRECTIONS_DIR . '/helpers', 'Corrections_View_Helper_');
         $itemId = $this->getParam('item_id');
         $item = $this->_helper->db->getTable('Item')->find($itemId);
@@ -46,7 +46,7 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
         $correction->save();
         $this->_helper->redirector->gotoUrl("corrections?status=submitted");
     }
-    
+
     public function correctAction()
     {
         $id = $this->getParam('id');
@@ -93,7 +93,7 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
         }
         return $elTexts;
     }
-    
+
     protected function validateCaptcha() {
         // ReCaptcha ignores the first argument.
         if ($this->captcha and !$this->captcha->isValid(null, $_POST)) {
