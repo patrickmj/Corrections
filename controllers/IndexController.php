@@ -16,7 +16,7 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
         $itemId = $this->getParam('item_id');
         $item = $this->_helper->db->getTable('Item')->find($itemId);
         $this->view->item = $item;
-        $elements = $this->getElements();
+        $elements = $this->getElements($item);
         $this->view->elements = $elements;
         $user = current_user();
         if (! $user) {
@@ -65,17 +65,42 @@ class Corrections_IndexController extends Omeka_Controller_AbstractActionControl
         $this->_helper->redirector->gotoUrl("items/show/{$correction->item_id}");
     }
 
-    protected function getElements()
+    protected function getElements($item)
     {
+        $db = get_db();
         $elements = array();
         $elTable = $this->_helper->db->getTable('Element');
         $correctableElements = json_decode(get_option('corrections_elements'), true);
+
+        
+        // Need to strip out elements that do not apply to the item
+        // based on Item Type Metadata settings
+        
+        
+        $itemTypeId = metadata($item, 'item_type_id');
+        if ($itemTypeId) {
+            $table = $db->getTable('ItemTypesElement');
+            $select = $table
+            ->getSelect()
+            ->where("item_type_id=?", $itemTypeId);
+            $itemTypeElementIds = $db->fetchPairs($select);
+        }
+        
+        
         foreach ($correctableElements as $elSet=>$els) {
             foreach ($els as $elName) {
                 $el = $elTable->findByElementSetNameAndElementName($elSet, $elName);
+                if ($elSet == "Item Type Metadata") {
+                    if (! empty ($itemTypeElementIds)) {
+                        if (! in_array($el->id, $itemTypeElementIds)) {
+                            continue;
+                        }
+                    }
+                }
                 $elements[$el->id] = $el;
             }
         }
+
         return $elements;
     }
 

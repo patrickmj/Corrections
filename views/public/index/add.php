@@ -61,7 +61,7 @@ $user = current_user();
 </div>
 
 
-<?php 
+<?php
 foreach ($elements as $element) {
     echo "<div class='element-correction' >";
     $elName = $element->name;
